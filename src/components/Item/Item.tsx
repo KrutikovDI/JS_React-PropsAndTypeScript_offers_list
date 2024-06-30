@@ -1,10 +1,14 @@
+import React from "react"
+import { itemProps } from '../../module/interface'
 
 
-export const Item = (props) => {
-    const { listing_id, url, MainImage, title, currency_code, price, quantity} = props.item
+
+export const Item = (props: itemProps) => {
+  if(props.item.state == 'removed') return
+    const { url, MainImage, title, currency_code, price, quantity} = props.item
+    console.log(MainImage);
 
   return (
-    <li key={listing_id}>
         <div className="item">
             <div className="item-image">
                 <a href={url}>
@@ -17,6 +21,5 @@ export const Item = (props) => {
                 <p className="item-quantity level-medium">{quantity}</p>
             </div>
         </div>
-    </li>  
   )
 }
